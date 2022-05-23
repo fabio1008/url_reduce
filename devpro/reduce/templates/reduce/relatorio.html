@@ -73,7 +73,7 @@
                                 <thead>
                                     <tr>
                                         <th class="text-left">Data</th>
-                                        <th>Total de Clique</th>
+                                        <th>Total de Cliques</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -118,13 +118,13 @@
           data: {
               labels: [
                   {% for r in redirecionamentos_por_data %}
-                        {% if forloop.counter == 1 %}
-                        "{{ r.data }}"
-                        {% else %}
-                        , "{{ r.data }}"
-                        {% endif %}
+                    {% if forloop.counter == 1 %}
+                    "{{ r.data }}"
+                    {% else %}
+                    , "{{ r.data }}"
+                    {% endif %}
                   {% endfor %}
-                  ],
+              ],
               datasets: [{
                   label: "Total de Cliques por Dia",
                   backgroundColor: '#005490',
@@ -137,8 +137,9 @@
                     , {{ r.cliques }}
                     {% endif %}
                   {% endfor %}
+                  ],
               }],
-          },
+              },
           options: {
               responsive: true,
               maintainAspectRatio: false,

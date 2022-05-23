@@ -9,7 +9,7 @@ from devpro.reduce.models import UrlRedirect, UrlLog
 def relatorios(requisicao, slug):
     url_redirect = UrlRedirect.objects.get(slug=slug)
     url_reduzida = requisicao.build_absolute_uri(f'/{slug}')
-    redirecioamentos_por_data = list(
+    redirecionamentos_por_data = list(
         UrlRedirect.objects.filter(
             slug=slug
         ).annotate(
@@ -21,8 +21,8 @@ def relatorios(requisicao, slug):
     contexto = {
         'reduce': url_redirect,
         'url_reduzida': url_reduzida,
-        'redirecioamentos_por_data': redirecioamentos_por_data,
-        'total_de_cliques': sum(r.cliques for r in redirecioamentos_por_data)
+        'redirecionamentos_por_data': redirecionamentos_por_data,
+        'total_de_cliques': sum(r.cliques for r in redirecionamentos_por_data)
     }
     return render(requisicao, 'reduce/relatorio.html', contexto)
 
